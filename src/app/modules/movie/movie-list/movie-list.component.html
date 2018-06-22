@@ -1,0 +1,9 @@
+<div class="container">
+    <app-movie-list-menu [options]="menu" (optionMenu)="listenMenu($event)"></app-movie-list-menu>
+
+    <div fxLayout="row wrap" fxLayoutAlign="space-between">
+      <ng-container *ngFor="let movie of movies.results">
+        <app-movie-list-card [movie]="movie"></app-movie-list-card>
+      </ng-container>
+    </div>
+</div>

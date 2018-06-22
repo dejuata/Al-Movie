@@ -1,0 +1,20 @@
+<app-movie-detail-header [movie]="movie.header"></app-movie-detail-header>
+
+<div fxLayout="row" fxlayoutalign="space-between center" class="container">
+  <div class="detail__container--one">
+    <app-movie-detail-info [info]="movie.info" [geners]="movie.genres"></app-movie-detail-info>
+  </div>
+  <div class="detail__container--two">
+    <mat-tab-group mat-stretch-tabs class="detail__tabs">
+      <mat-tab label="Casting">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between">
+          <ng-container *ngFor="let cast of casting.cast">
+            <app-actor-list-card [actor]="cast" [styleMovie]="true"></app-actor-list-card>
+          </ng-container>
+        </div>
+      </mat-tab>
+      <mat-tab label="Videos"> Content 2 </mat-tab>
+      <mat-tab label="Images"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

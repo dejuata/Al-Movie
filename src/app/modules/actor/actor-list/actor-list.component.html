@@ -1,0 +1,9 @@
+<div class="container">
+  <h2 class="list__title">Popular People</h2>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <ng-container *ngFor="let actor of actors.results">
+      <app-actor-list-card [actor]="actor"></app-actor-list-card>
+    </ng-container>
+  </div>
+</div>
+

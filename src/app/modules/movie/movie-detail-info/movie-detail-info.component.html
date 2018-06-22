@@ -1,0 +1,28 @@
+<div class="detail__info" fxLayout="row">
+
+  <mat-list role="list">
+    <ng-container *ngFor="let item of info | keys">
+      <mat-list-item role="listitem">
+        <strong>{{ item.key | titlecase }}: </strong>
+      </mat-list-item>
+      <mat-list-item class="detail__info-list-item--value">
+        <span *ngIf="item.key == 'homepage'; else other_span" [innerHtml]="item.value | linkifystr"></span>
+        <ng-template #other_span>
+          <span>{{ item.value }}</span>
+        </ng-template>
+      </mat-list-item>
+    </ng-container>
+
+    <mat-list-item role="listitem">
+      <strong>Genres:</strong>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div fxLayout="row wrap" style="margin-top: 3rem;">
+        <ng-container *ngFor="let gener of geners">
+          <button class="detail__info-btn" mat-raised-button color="accent">{{ gener.name }}</button>
+        </ng-container>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

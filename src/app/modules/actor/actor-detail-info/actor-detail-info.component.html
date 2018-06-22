@@ -1,0 +1,14 @@
+<div class="detail__info" fxLayout="row">
+  <mat-list role="list">
+    <ng-container *ngFor="let item of info | keys">
+      <mat-list-item role="listitem">
+        <strong>{{ item.key | titlecase }}: </strong>
+      </mat-list-item>
+      <mat-list-item class="detail__info-list-item--value">
+        {{ item.value }}
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</div>
+
+

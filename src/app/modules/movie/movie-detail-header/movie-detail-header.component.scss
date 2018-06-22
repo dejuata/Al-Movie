@@ -1,0 +1,46 @@
+.detail {
+  &__cover {
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 450px;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+  &__shadow {
+    height: 450px;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+  }
+  &__poster {
+    display: block;
+    width: 250px;
+    height: 400px;
+    position: relative;
+    z-index: 2;
+    &-image {
+      height: 100%;
+    }
+  }
+  &__info {
+    min-height: 450px;
+    width: 700px;
+    color: #fff;
+    font-family: Roboto;
+    &-title {
+      width: 100%;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      line-height: 1.1rem;
+      font-weight: 700;
+    }
+    &-subtitle {
+      width: 100%;
+      margin: 0 0 8px 0;
+    }
+    &-overview {
+      white-space: normal;
+      line-height: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<div class="menu-container">
+  <ng-container *ngFor="let option of options">
+      <button mat-button color="accent" (click)="optionClicked(option)">{{ option | titlecase }}</button>
+  </ng-container>
+</div>
+
+

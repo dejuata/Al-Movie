@@ -1,0 +1,12 @@
+<mat-card [ngClass]="{'actor__card--movie': styleMovie}" class="actor__card">
+  <a routerLink="/actors/{{ actor.id }}">
+    <img mat-card-image src="https://image.tmdb.org/t/p/w235_and_h235_face/{{ actor.profile_path }}" alt="{{ actor.name }}">
+  </a>
+  <mat-card-footer>
+    <mat-card-title [ngClass]="{'actor__card--movie-title': styleMovie}" class="actor__card-title">
+      <a routerLink="/actors/{{ actor.id }}" style="text-decoration: none; color: rgba(0, 0, 0, 0.87);">
+        {{actor.name}}
+      </a>
+    </mat-card-title>
+  </mat-card-footer>
+</mat-card>

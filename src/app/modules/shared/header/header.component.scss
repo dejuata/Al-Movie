@@ -1,0 +1,29 @@
+.nav-header {
+  height: 80px;
+}
+
+.nav-brand {
+  font-size: 2rem;
+  height: 100%;
+}
+
+
+.nav-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 5rem !important;
+}
+
+// search
+.search-bar {
+  background-color: #222;
+}
+.search-bar * {
+  color: white !important;
+}
+.search-bar input {
+  border-bottom-color: white;
+}
+.md-errors-spacer { display:none; }

@@ -1,0 +1,11 @@
+<div class="search-container alternative">
+    <mat-form-field class="search-form">
+        <button class="search-btn" mat-button *ngIf="value" matPrefix mat-icon-button  (click)="value=''">
+            <mat-icon>search</mat-icon>
+        </button>
+        <input matInput type="text" placeholder="Search your favorite movies, series and actors" class="search-input"/>
+        <button class="search-btn" mat-button *ngIf="value" matSuffix mat-icon-button  (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+</div>

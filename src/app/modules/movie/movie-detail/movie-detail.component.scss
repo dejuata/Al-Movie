@@ -1,0 +1,14 @@
+.detail {
+  &__container {
+    &--one {
+      width: 30%;
+    }
+    &--two {
+      width: 70%;
+    }
+  }
+}
+.detail__tabs {
+  width: 100%;
+}
+

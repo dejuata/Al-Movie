@@ -1,0 +1,32 @@
+.mat-card {
+  padding: 0;
+}
+
+.mat-card-header-text {
+  margin: 0 !important;
+}
+
+.card {
+  &__container {
+    max-width: 450px;
+    overflow: hidden;
+    margin: 2rem 0;
+    height: 275px;
+  }
+
+  &__image {
+    line-height: 0;
+  }
+
+  &__content {
+    padding: 1.2rem 1rem;
+
+    &-overview {
+      white-space: normal;
+      color: #4d4d4d;
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+      margin: 0 8px;
+    }
+  }
+}
