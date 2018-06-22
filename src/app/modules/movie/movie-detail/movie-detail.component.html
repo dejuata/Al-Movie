@@ -1,9 +1,11 @@
 <app-movie-detail-header [movie]="movie.header"></app-movie-detail-header>
 
 <div fxLayout="row" fxlayoutalign="space-between center" class="container">
+
   <div class="detail__container--one">
-    <app-movie-detail-info [info]="movie.info" [geners]="movie.genres"></app-movie-detail-info>
+    <app-detail-info [info]="movie.info" [genres]="movie.genres"></app-detail-info>
   </div>
+
   <div class="detail__container--two">
     <mat-tab-group mat-stretch-tabs class="detail__tabs">
       <mat-tab label="Casting">

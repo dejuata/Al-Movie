@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { DurationTimePipe } from '../pipes/duration-time.pipe';
+import { DurationTimePipe } from '../../../pipes/duration-time.pipe';
 
 export class MovieDetailDescriptor {
   public id: number;

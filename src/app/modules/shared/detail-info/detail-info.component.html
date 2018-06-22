@@ -1,6 +1,7 @@
 <div class="detail__info" fxLayout="row">
 
   <mat-list role="list">
+
     <ng-container *ngFor="let item of info | keys">
       <mat-list-item role="listitem">
         <strong>{{ item.key | titlecase }}: </strong>
@@ -13,16 +14,20 @@
       </mat-list-item>
     </ng-container>
 
-    <mat-list-item role="listitem">
-      <strong>Genres:</strong>
-    </mat-list-item>
+    <ng-container *ngIf="genres">
+      <mat-list-item role="listitem">
+        <strong>Genres:</strong>
+      </mat-list-item>
 
-    <mat-list-item role="listitem">
-      <div fxLayout="row wrap" style="margin-top: 3rem;">
-        <ng-container *ngFor="let gener of geners">
-          <button class="detail__info-btn" mat-raised-button color="accent">{{ gener.name }}</button>
-        </ng-container>
-      </div>
-    </mat-list-item>
+      <mat-list-item role="listitem">
+        <div fxLayout="row wrap" style="margin-top: 3rem;">
+          <ng-container *ngFor="let genre of genres">
+            <button class="detail__info-btn" mat-raised-button color="accent">{{ genre.name }}</button>
+          </ng-container>
+        </div>
+      </mat-list-item>
+    </ng-container>
+
   </mat-list>
 </div>
+

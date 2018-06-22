@@ -61,7 +61,7 @@ export class ActorDetailInfoDescriptor {
     info.gender = rawData.hasOwnProperty('gender') ? ActorDetailInfoDescriptor.genderText(rawData.gender) : '';
     info.birthday = rawData.hasOwnProperty('birthday') ? date.transform(rawData.birthday) : '';
     info.place_of_birth = rawData.hasOwnProperty('place_of_birth') ? rawData.place_of_birth : '';
-    info.homepage = rawData.hasOwnProperty('homepage') && rawData.homepage != null  ? rawData.homepage : '';
+    info.homepage = rawData.hasOwnProperty('homepage') && rawData.homepage != null  ? rawData.homepage : 'None';
 
     return info;
   }
