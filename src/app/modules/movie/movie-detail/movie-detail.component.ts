@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { MovieDetailDescriptor } from '../types/movie-detail.type';
-import { Response } from '@angular/http';
+import { MovieCreditsDescriptor } from '../types/movie-credits.type';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,7 +13,7 @@ export class MovieDetailComponent implements OnInit {
 
   public id: string;
   public movie: MovieDetailDescriptor = new MovieDetailDescriptor();
-  public casting: any;
+  public casting: MovieCreditsDescriptor = new MovieCreditsDescriptor();
 
 
   constructor(
@@ -39,9 +39,8 @@ export class MovieDetailComponent implements OnInit {
 
   getCreditsMovie(id: string) {
     this.movieService.getCreditsMovie(id)
-      .subscribe((data: Response) => {
+      .subscribe((data) => {
         this.casting = data;
-        console.log(data);
       }, error => {
         console.error(error);
       });

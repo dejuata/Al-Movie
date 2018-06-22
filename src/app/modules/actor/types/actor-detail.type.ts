@@ -14,7 +14,7 @@ export class ActorDetailDescriptor {
     actor.header = ActorDetailHeaderDescriptor.import({
       name: rawData.name,
       biography: rawData.biography,
-      profile_path: rawData.profile_path
+      profile_path: rawData.profile_path ? rawData.profile_path : ''
     });
 
     actor.info = ActorDetailInfoDescriptor.import({
@@ -29,18 +29,22 @@ export class ActorDetailDescriptor {
 }
 
 export class ActorDetailHeaderDescriptor {
-  public name: string;
-  public biography: string;
-  public profile_path: string;
+  public title: string;
+  public subtitle: string;
+  public summary: string;
+  public poster_path: string;
 
   public static import(rawData: any) {
     // tslint:disable-next-line:prefer-const
     let header: ActorDetailHeaderDescriptor = new ActorDetailHeaderDescriptor();
     const profile_path_url = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2';
+    const profile_path_url_default = 'https://icdn-0.motor1.com/custom/share/default-user.png';
 
-    header.name = rawData.hasOwnProperty('name') ? rawData.name : '';
-    header.biography = rawData.hasOwnProperty('biography') ? rawData.biography : 'Biography not available';
-    header.profile_path = rawData.hasOwnProperty('profile_path') ? `${profile_path_url}${rawData.profile_path}` : '';
+    header.title = rawData.hasOwnProperty('name') ? rawData.name : '';
+    header.subtitle = 'Biography';
+    header.summary = rawData.hasOwnProperty('biography') ? rawData.biography : 'Biography not available';
+    header.poster_path = rawData.hasOwnProperty('profile_path') ?
+    `${profile_path_url}${rawData.profile_path}` : profile_path_url_default;
 
     return header;
   }

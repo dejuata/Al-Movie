@@ -49,7 +49,8 @@ export class MovieDetailDescriptor {
 
 export class MovieDetailHeaderDescriptor {
   public title: string;
-  public overview: string;
+  public subtitle: string;
+  public summary: string;
   public poster_path: string;
   public backdrop_path: string;
 
@@ -60,7 +61,8 @@ export class MovieDetailHeaderDescriptor {
     const backdrop_path_url = 'https://image.tmdb.org/t/p/w1400_and_h450_face';
 
     movie.title = rawData.hasOwnProperty('title') ? rawData.title : '';
-    movie.overview = rawData.hasOwnProperty('overview') ? rawData.overview : '';
+    movie.subtitle = 'Overview';
+    movie.summary = rawData.hasOwnProperty('overview') ? rawData.overview : '';
     movie.poster_path = rawData.hasOwnProperty('poster_path') ? `${poster_path_url}${rawData.poster_path}` : '';
     movie.backdrop_path = rawData.hasOwnProperty('backdrop_path') ? `${backdrop_path_url}${rawData.backdrop_path}` : '';
 
@@ -100,26 +102,6 @@ export class MovieDetailInfoDescriptor {
 
   public static language(str: string): string {
     return str === 'en' ? 'English' : str;
-  }
-}
-
-export class GenresDescriptor {
-  public genres: GenreDescriptor[] = [];
-
-  public static import(rawData: any) {
-    // tslint:disable-next-line:prefer-const
-    let response: GenresDescriptor = new GenresDescriptor();
-    let genre: GenreDescriptor;
-
-    if (rawData.hasOwnProperty('genres')) {
-        for (let i = 0; i < rawData.genres.length; i++) {
-          // tslint:disable-next-line:prefer-const
-          let row = rawData.genres[i];
-          genre = GenreDescriptor.import(row);
-          response.genres.push(genre);
-        }
-    }
-    return response;
   }
 }
 

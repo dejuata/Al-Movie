@@ -28,7 +28,6 @@ export class ActorDetailComponent implements OnInit {
     this.actorService.getDetailActor(id)
       .subscribe((data) => {
         this.actor = data;
-        console.log(data);
       }, error => {
         console.error(error);
       });

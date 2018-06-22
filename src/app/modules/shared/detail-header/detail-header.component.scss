@@ -1,5 +1,6 @@
 .detail {
   &__cover {
+    background: no-repeat center;
     background-position: 50% 50%;
     background-size: cover;
     height: 450px;
@@ -10,7 +11,7 @@
   &__shadow {
     height: 450px;
     width: 100%;
-    // background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
   }
   &__poster {
     display: block;
@@ -25,8 +26,7 @@
   &__info {
     min-height: 450px;
     width: 700px;
-    // color: #fff;
-    color: rgba(0, 0, 0, 0.87);
+    color: #fff;
     font-family: Roboto;
     &-title {
       width: 100%;
@@ -39,7 +39,7 @@
       width: 100%;
       margin: 0 0 8px 0;
     }
-    &-overview {
+    &-summary {
       white-space: normal;
       line-height: 1.5rem;
     }

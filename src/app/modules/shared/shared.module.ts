@@ -22,6 +22,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { DetailInfoComponent } from './detail-info/detail-info.component';
+import { DetailHeaderComponent } from './detail-header/detail-header.component';
 
 @NgModule({
   imports: [
@@ -41,11 +42,13 @@ import { DetailInfoComponent } from './detail-info/detail-info.component';
     SearchComponent,
     KeysPipe,
     LinkifystrPipe,
-    DetailInfoComponent
+    DetailInfoComponent,
+    DetailHeaderComponent
   ],
   exports: [
     LayoutComponent,
-    DetailInfoComponent
+    DetailInfoComponent,
+    DetailHeaderComponent
   ]
 })
 export class SharedModule { }

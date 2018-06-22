@@ -16,7 +16,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ActorListComponent } from './actor-list/actor-list.component';
 import { ActorListCardComponent } from './actor-list-card/actor-list-card.component';
 import { ActorDetailComponent } from './actor-detail/actor-detail.component';
-import { ActorDetailHeaderComponent } from './actor-detail-header/actor-detail-header.component';
 
 @NgModule({
   imports: [
@@ -30,8 +29,7 @@ import { ActorDetailHeaderComponent } from './actor-detail-header/actor-detail-h
   declarations: [
     ActorListComponent,
     ActorListCardComponent,
-    ActorDetailComponent,
-    ActorDetailHeaderComponent,
+    ActorDetailComponent
   ],
   exports: [
     ActorListCardComponent
