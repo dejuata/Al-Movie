@@ -17,12 +17,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Pipes
 import { TruncatePipe } from '../../pipes/truncate.pipe';
+import { SafePipe } from '../../pipes/safe.pipe';
 
 // Component
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieListCardComponent } from './movie-list-card/movie-list-card.component';
 import { MovieListMenuComponent } from './movie-list-menu/movie-list-menu.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { MovieDetailVideoComponent } from './movie-detail-video/movie-detail-video.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     MovieListMenuComponent,
     MovieDetailComponent,
     TruncatePipe,
+    MovieDetailVideoComponent,
+    SafePipe
   ],
   exports: [
     MovieListCardComponent

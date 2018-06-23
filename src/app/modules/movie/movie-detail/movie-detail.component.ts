@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
-
+import { MovieVideosDescriptor } from '../types/movie-videos.type';
+// import { Response } from '@angular/http';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -14,6 +15,7 @@ export class MovieDetailComponent implements OnInit {
   public id: string;
   public movie: MovieDetailDescriptor = new MovieDetailDescriptor();
   public casting: MovieCreditsDescriptor = new MovieCreditsDescriptor();
+  public videos: MovieVideosDescriptor = new MovieVideosDescriptor();
 
 
   constructor(
@@ -23,6 +25,7 @@ export class MovieDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getDetailMovie(this.id);
     this.getCreditsMovie(this.id);
+    this.getVideosMovie(this.id);
   }
 
   ngOnInit() {
@@ -30,7 +33,7 @@ export class MovieDetailComponent implements OnInit {
 
   getDetailMovie(id: string) {
     this.movieService.getDetailMovie(id)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.movie = data;
       }, error => {
         console.error(error);
@@ -39,11 +42,24 @@ export class MovieDetailComponent implements OnInit {
 
   getCreditsMovie(id: string) {
     this.movieService.getCreditsMovie(id)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.casting = data;
       }, error => {
         console.error(error);
       });
+  }
+
+  getVideosMovie(id: string) {
+    this.movieService.getVideosMovie(id)
+      .subscribe(data => {
+        this.videos = data;
+      }, error => {
+        console.error(error);
+      });
+  }
+
+  tabChange(event) {
+    // console.log(event);
   }
 
 }

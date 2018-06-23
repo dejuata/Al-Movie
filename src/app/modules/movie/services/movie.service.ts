@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
+import { MovieVideosDescriptor } from '../types/movie-videos.type';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,15 @@ export class MovieService {
       .pipe(
         map(data => {
           return MovieCreditsDescriptor.import(data);
+        })
+      );
+  }
+
+  public getVideosMovie(id: string) {
+    return this.http.get(this.url(this.apiKey, `${id}/videos`))
+      .pipe(
+        map(data => {
+          return MovieVideosDescriptor.import(data);
         })
       );
   }

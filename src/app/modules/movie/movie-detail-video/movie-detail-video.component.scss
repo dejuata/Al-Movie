@@ -1,0 +1,12 @@
+.video{
+  &__card{
+    width: 600px;
+    margin: 2rem 0;
+  }
+
+  &__title{
+    margin-bottom: 0 !important;
+    font-size: 1.2rem;
+    padding: 0 1rem 1rem;
+  }
+}

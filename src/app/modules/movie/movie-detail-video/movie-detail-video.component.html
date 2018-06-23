@@ -1,0 +1,8 @@
+<mat-card class="video__card">
+  <iframe mat-card-image id="player" [src]="video.url | safe" type="text/html" width="560" height="340"
+    frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true">
+  </iframe>
+  <mat-card-footer>
+    <mat-card-title class="video__title">{{ video.name }}</mat-card-title>
+  </mat-card-footer>
+</mat-card>
