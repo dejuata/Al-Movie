@@ -1,9 +1,11 @@
 <div class="container">
   <h2 class="list__title">Popular People</h2>
   <div fxLayout="row wrap" fxLayoutAlign="space-between">
-    <ng-container *ngFor="let actor of actors.results">
+    <ng-container *ngFor="let actor of actors.actors">
       <app-actor-list-card [actor]="actor"></app-actor-list-card>
     </ng-container>
   </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <app-paginator [length]="actors.paginator.total_pages" [pageSize]="actors.paginator.page_size"></app-paginator>
+  </div>
 </div>
-

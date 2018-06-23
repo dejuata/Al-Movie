@@ -3,6 +3,7 @@ import { ActorService } from '../services/actor.service';
 import { ActivatedRoute } from '@angular/router';
 import { ActorDetailDescriptor } from '../types/actor-detail.type';
 import { ActorCreditsDescriptor } from '../types/actor-credits.type';
+import { ActorImagesDescriptor } from '../types/actor-images.type';
 
 @Component({
   selector: 'app-actor-detail',
@@ -12,8 +13,9 @@ import { ActorCreditsDescriptor } from '../types/actor-credits.type';
 export class ActorDetailComponent implements OnInit {
 
   public id: string;
-  public actor: ActorDetailDescriptor = new ActorDetailDescriptor();
-  public casting: ActorCreditsDescriptor = new ActorCreditsDescriptor();
+  public actor: ActorDetailDescriptor;
+  public casting: ActorCreditsDescriptor;
+  public images: ActorImagesDescriptor;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +24,7 @@ export class ActorDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getDetailActor(this.id);
     this.getCreditsActor(this.id);
+    this.getImagesActor(this.id);
   }
 
   ngOnInit() {
@@ -29,7 +32,7 @@ export class ActorDetailComponent implements OnInit {
 
   getDetailActor(id: string) {
     this.actorService.getDetailActor(id)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.actor = data;
       }, error => {
         console.error(error);
@@ -38,9 +41,19 @@ export class ActorDetailComponent implements OnInit {
 
   getCreditsActor(id: string) {
     this.actorService.getCreditsActor(id)
-      .subscribe((data) => {
+      .subscribe(data => {
         this.casting = data;
-        console.log(this.casting);
+      }, error => {
+        console.error(error);
+      });
+  }
+
+  getImagesActor(id: string) {
+    this.actorService.getImagesActor(id)
+      .subscribe(data => {
+        this.images = data;
+      }, error => {
+        console.error(error);
       });
   }
 }

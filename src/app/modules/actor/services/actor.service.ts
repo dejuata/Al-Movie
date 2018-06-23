@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ActorDetailDescriptor } from '../types/actor-detail.type';
 import { ActorCreditsDescriptor } from '../types/actor-credits.type';
+import { ActorListDescriptor } from '../types/actor-list.type';
+import { ActorImagesDescriptor } from '../types/actor-images.type';
 
 
 @Injectable({
@@ -19,7 +21,12 @@ export class ActorService {
   }
 
   public getListActors(endpoint: string) {
-    return this.http.get(this.url(this.apiKey, endpoint));
+    return this.http.get(this.url(this.apiKey, endpoint))
+      .pipe(
+        map(data => {
+          return ActorListDescriptor.import(data);
+        })
+      );
   }
 
   public getDetailActor(id: string) {
@@ -38,5 +45,26 @@ export class ActorService {
           return ActorCreditsDescriptor.import(data);
         })
       );
+  }
+
+  public getImagesActor(id: string) {
+    return this.http.get(this.url(this.apiKey, `${id}/images`))
+    .pipe(
+      map(data => {
+        // tslint:disable-next-line:prefer-const
+        let result: ActorImagesDescriptor = ActorImagesDescriptor.import(data);
+
+        result.images.sort((a, b) => {
+          if (a.vote_average < b.vote_average) {
+            return 1;
+          } else if (a.vote_average > b.vote_average) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+        return result;
+      })
+    );
   }
 }

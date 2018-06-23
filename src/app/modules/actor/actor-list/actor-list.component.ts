@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActorService } from '../services/actor.service';
-import { Response } from '@angular/http';
+import { ActorListDescriptor } from '../types/actor-list.type';
 
 @Component({
   selector: 'app-actor-list',
@@ -9,7 +9,7 @@ import { Response } from '@angular/http';
 })
 export class ActorListComponent implements OnInit {
 
-  public actors;
+  public actors: ActorListDescriptor;
   public option = 'popular';
 
   constructor(
@@ -20,9 +20,8 @@ export class ActorListComponent implements OnInit {
 
   getListActors(opt: string) {
     this.actorService.getListActors(opt)
-      .subscribe((data: Response) => {
+      .subscribe(data => {
         this.actors = data;
-        console.log(this.actors);
       }, error => {
         console.error(error);
       });

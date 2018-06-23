@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 // Pipes
 import { KeysPipe } from '../../pipes/keys.pipe';
@@ -23,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { DetailInfoComponent } from './detail-info/detail-info.component';
 import { DetailHeaderComponent } from './detail-header/detail-header.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,8 @@ import { DetailHeaderComponent } from './detail-header/detail-header.component';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatPaginatorModule
   ],
   declarations: [
     LayoutComponent,
@@ -43,12 +46,14 @@ import { DetailHeaderComponent } from './detail-header/detail-header.component';
     KeysPipe,
     LinkifystrPipe,
     DetailInfoComponent,
-    DetailHeaderComponent
+    DetailHeaderComponent,
+    PaginatorComponent,
   ],
   exports: [
     LayoutComponent,
     DetailInfoComponent,
-    DetailHeaderComponent
+    DetailHeaderComponent,
+    PaginatorComponent
   ]
 })
 export class SharedModule { }

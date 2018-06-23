@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
-import { Response } from '@angular/http';
+import { MovieListDescriptor } from '../types/movie-list.type';
 
 @Component({
   selector: 'app-movie-list',
@@ -9,7 +9,7 @@ import { Response } from '@angular/http';
 })
 export class MovieListComponent implements OnInit {
 
-  public movies;
+  public movies: MovieListDescriptor;
   public menu = ['popular', 'top rated', 'upcoming', 'now playing'];
   public option = 'popular';
   public checkedSlide = false;
@@ -31,7 +31,7 @@ export class MovieListComponent implements OnInit {
 
   getListMovies(opt: string) {
     this.movieService.getListMovies(opt)
-      .subscribe((data: Response) => {
+      .subscribe(data => {
         this.movies = data;
       }, error => {
         console.error(error);

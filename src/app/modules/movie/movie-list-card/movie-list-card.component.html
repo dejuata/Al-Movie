@@ -5,7 +5,7 @@
 
   <div [ngClass]="{'movie__card-image': !styleActor}">
     <a routerLink="/movies/{{ movie.id }}">
-      <img [ngClass]="{'movie__card--actor-image': styleActor}" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{movie.poster_path}}" alt="movie">
+      <img [ngClass]="{'movie__card--actor-image': styleActor}" src="{{ movie.poster_path }}" alt="movie">
     </a>
   </div>
 
@@ -17,12 +17,12 @@
             {{ movie.title }}
           </a>
         </mat-card-title>
-        <mat-card-subtitle>{{ movie.release_date | date }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ movie.release_date }}</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
         <p class="movie__card-content-overview">
-          {{ movie.overview | truncate: 213}}
+          {{ movie.overview }}
         </p>
       </mat-card-content>
     </div>

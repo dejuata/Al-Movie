@@ -5,8 +5,12 @@
   </div>
 
   <div fxLayout="row wrap" fxLayoutAlign="space-between">
-    <ng-container *ngFor="let movie of movies.results">
+    <ng-container *ngFor="let movie of movies.movies">
       <app-movie-list-card [movie]="movie" [compactView]="checkedSlide"></app-movie-list-card>
     </ng-container>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <app-paginator [length]="movies.paginator.total_pages" [pageSize]="movies.paginator.page_size"></app-paginator>
   </div>
 </div>
