@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Pipes
 import { TruncatePipe } from '../../pipes/truncate.pipe';
@@ -22,7 +23,6 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieListCardComponent } from './movie-list-card/movie-list-card.component';
 import { MovieListMenuComponent } from './movie-list-menu/movie-list-menu.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { MovieDetailHeaderComponent } from './movie-detail-header/movie-detail-header.component';
 
 @NgModule({
   imports: [
@@ -33,15 +33,18 @@ import { MovieDetailHeaderComponent } from './movie-detail-header/movie-detail-h
     MatButtonModule,
     MatTabsModule,
     ActorModule,
-    SharedModule
+    SharedModule,
+    MatSlideToggleModule
   ],
   declarations: [
     MovieListComponent,
     MovieListCardComponent,
     MovieListMenuComponent,
     MovieDetailComponent,
-    MovieDetailHeaderComponent,
     TruncatePipe,
+  ],
+  exports: [
+    MovieListCardComponent
   ]
 })
 export class MovieModule { }

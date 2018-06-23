@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActorService } from '../services/actor.service';
 import { ActivatedRoute } from '@angular/router';
 import { ActorDetailDescriptor } from '../types/actor-detail.type';
+import { ActorCreditsDescriptor } from '../types/actor-credits.type';
 
 @Component({
   selector: 'app-actor-detail',
@@ -12,6 +13,7 @@ export class ActorDetailComponent implements OnInit {
 
   public id: string;
   public actor: ActorDetailDescriptor = new ActorDetailDescriptor();
+  public casting: ActorCreditsDescriptor = new ActorCreditsDescriptor();
 
   constructor(
     private route: ActivatedRoute,
@@ -19,6 +21,7 @@ export class ActorDetailComponent implements OnInit {
   ) {
     this.id = this.route.snapshot.params['id'];
     this.getDetailActor(this.id);
+    this.getCreditsActor(this.id);
   }
 
   ngOnInit() {
@@ -30,6 +33,14 @@ export class ActorDetailComponent implements OnInit {
         this.actor = data;
       }, error => {
         console.error(error);
+      });
+  }
+
+  getCreditsActor(id: string) {
+    this.actorService.getCreditsActor(id)
+      .subscribe((data) => {
+        this.casting = data;
+        console.log(this.casting);
       });
   }
 }

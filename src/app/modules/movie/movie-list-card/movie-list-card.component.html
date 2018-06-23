@@ -1,27 +1,32 @@
-<mat-card class="card__container" fxLayout="row">
+<mat-card [ngClass]="{
+  'movie__card--actor-container': styleActor,
+  'movie__card-container': !styleActor
+}" fxLayout="row">
 
-  <div class="card__image">
+  <div [ngClass]="{'movie__card-image': !styleActor}">
     <a routerLink="/movies/{{ movie.id }}">
-      <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{movie.poster_path}}" alt="movie">
+      <img [ngClass]="{'movie__card--actor-image': styleActor}" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{movie.poster_path}}" alt="movie">
     </a>
   </div>
 
-  <div fxLayout="column" class="card__content">
-    <mat-card-header>
-      <mat-card-title>
-        <a routerLink="/movies/{{ movie.id }}" style="text-decoration: none; color: rgba(0, 0, 0, 0.87);">
-          {{ movie.title }}
-        </a>
-      </mat-card-title>
-      <mat-card-subtitle>{{ movie.release_date | date }}</mat-card-subtitle>
-    </mat-card-header>
+  <ng-container *ngIf="!compactView">
+    <div fxLayout="column" class="movie__card-content">
+      <mat-card-header>
+        <mat-card-title>
+          <a routerLink="/movies/{{ movie.id }}" style="text-decoration: none; color: rgba(0, 0, 0, 0.87);">
+            {{ movie.title }}
+          </a>
+        </mat-card-title>
+        <mat-card-subtitle>{{ movie.release_date | date }}</mat-card-subtitle>
+      </mat-card-header>
 
-    <mat-card-content>
-      <p class="card__content-overview">
-        {{ movie.overview | truncate: 213}}
-      </p>
-    </mat-card-content>
-  </div>
+      <mat-card-content>
+        <p class="movie__card-content-overview">
+          {{ movie.overview | truncate: 213}}
+        </p>
+      </mat-card-content>
+    </div>
+  </ng-container>
 
 </mat-card>
 

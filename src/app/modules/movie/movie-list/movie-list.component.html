@@ -1,9 +1,12 @@
 <div class="container">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="list__menu">
     <app-movie-list-menu [options]="menu" (optionMenu)="listenMenu($event)"></app-movie-list-menu>
+    <mat-slide-toggle (change)="changeSlide()">Compact View</mat-slide-toggle>
+  </div>
 
-    <div fxLayout="row wrap" fxLayoutAlign="space-between">
-      <ng-container *ngFor="let movie of movies.results">
-        <app-movie-list-card [movie]="movie"></app-movie-list-card>
-      </ng-container>
-    </div>
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <ng-container *ngFor="let movie of movies.results">
+      <app-movie-list-card [movie]="movie" [compactView]="checkedSlide"></app-movie-list-card>
+    </ng-container>
+  </div>
 </div>

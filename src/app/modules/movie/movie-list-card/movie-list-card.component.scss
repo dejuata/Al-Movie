@@ -6,19 +6,19 @@
   margin: 0 !important;
 }
 
-.card {
-  &__container {
+.movie__card {
+  &-container {
     max-width: 450px;
     overflow: hidden;
     margin: 2rem 0;
     height: 275px;
   }
 
-  &__image {
+  &-image {
     line-height: 0;
   }
 
-  &__content {
+  &-content {
     padding: 1.2rem 1rem;
 
     &-overview {
@@ -28,5 +28,18 @@
       line-height: 1.2rem;
       margin: 0 8px;
     }
+  }
+}
+
+// Styles for when the component is called from movie
+.movie__card--actor {
+  &-container {
+    margin: 0 1rem 2rem 0;
+    overflow: hidden;
+    height: 225px;
+  }
+  &-image {
+    width: 150px;
+
   }
 }

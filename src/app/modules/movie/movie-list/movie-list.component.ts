@@ -12,6 +12,7 @@ export class MovieListComponent implements OnInit {
   public movies;
   public menu = ['popular', 'top rated', 'upcoming', 'now playing'];
   public option = 'popular';
+  public checkedSlide = false;
 
   constructor(
     private movieService: MovieService
@@ -22,6 +23,10 @@ export class MovieListComponent implements OnInit {
   listenMenu(event) {
     this.option = event.split(' ').join('_');
     this.getListMovies(this.option);
+  }
+
+  changeSlide() {
+    this.checkedSlide = this.checkedSlide ? false : true;
   }
 
   getListMovies(opt: string) {

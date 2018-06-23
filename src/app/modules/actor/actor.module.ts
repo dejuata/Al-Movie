@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 
 // Flex
 import { FlexLayoutModule } from '@angular/flex-layout';
+// Pipes
+// import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 // Material
 import { MatCardModule } from '@angular/material/card';
@@ -16,6 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ActorListComponent } from './actor-list/actor-list.component';
 import { ActorListCardComponent } from './actor-list-card/actor-list-card.component';
 import { ActorDetailComponent } from './actor-detail/actor-detail.component';
+// import { MovieListCardComponent } from '../movie/movie-list-card/movie-list-card.component';
 
 @NgModule({
   imports: [
@@ -24,12 +27,14 @@ import { ActorDetailComponent } from './actor-detail/actor-detail.component';
     FlexLayoutModule,
     MatCardModule,
     MatTabsModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     ActorListComponent,
     ActorListCardComponent,
-    ActorDetailComponent
+    ActorDetailComponent,
+    // MovieListCardComponent,
+    // TruncatePipe
   ],
   exports: [
     ActorListCardComponent

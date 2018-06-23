@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MovieListCardComponent implements OnInit {
 
   @Input() movie;
+  @Input() compactView;
+  @Input() styleActor;
 
   constructor() { }
 
