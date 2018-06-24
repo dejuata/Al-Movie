@@ -16,7 +16,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Pipes
-import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { SafePipe } from '../../pipes/safe.pipe';
 
 // Component
@@ -43,7 +42,6 @@ import { MovieDetailVideoComponent } from './movie-detail-video/movie-detail-vid
     MovieListCardComponent,
     MovieListMenuComponent,
     MovieDetailComponent,
-    TruncatePipe,
     MovieDetailVideoComponent,
     SafePipe
   ],

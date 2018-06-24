@@ -11,16 +11,14 @@ import { MovieVideosDescriptor } from '../types/movie-videos.type';
 })
 export class MovieService {
 
-  private apiKey = '5421a9a38653bf083798a7f242aa143b';
-
   constructor(private http: HttpClient) { }
 
-  private url(apiKey: string, endpoint: string) {
-    return `https://api.themoviedb.org/3/movie/${endpoint}?api_key=${apiKey}&language=en-US&page=1`;
+  private url(endpoint: string) {
+    return `https://api.themoviedb.org/3/movie/${endpoint}`;
   }
 
   public getListMovies(endpoint: string) {
-    return this.http.get(this.url(this.apiKey, endpoint))
+    return this.http.get(this.url(endpoint))
       .pipe(
         map(data => {
           return MovieListDescriptor.import(data);
@@ -29,7 +27,7 @@ export class MovieService {
   }
 
   public getDetailMovie(id: string) {
-    return this.http.get(this.url(this.apiKey, id))
+    return this.http.get(this.url(id))
       .pipe(
         map(data => {
           return MovieDetailDescriptor.import(data);
@@ -38,7 +36,7 @@ export class MovieService {
   }
 
   public getCreditsMovie(id: string) {
-    return this.http.get(this.url(this.apiKey, `${id}/credits`))
+    return this.http.get(this.url(`${id}/credits`))
       .pipe(
         map(data => {
           return MovieCreditsDescriptor.import(data);
@@ -47,7 +45,7 @@ export class MovieService {
   }
 
   public getVideosMovie(id: string) {
-    return this.http.get(this.url(this.apiKey, `${id}/videos`))
+    return this.http.get(this.url(`${id}/videos`))
       .pipe(
         map(data => {
           return MovieVideosDescriptor.import(data);

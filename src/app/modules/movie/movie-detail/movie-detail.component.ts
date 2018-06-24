@@ -4,7 +4,7 @@ import { MovieService } from '../services/movie.service';
 import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
 import { MovieVideosDescriptor } from '../types/movie-videos.type';
-// import { Response } from '@angular/http';
+import { ActorSummaryDescriptor } from '../../actor/types/actor-list.type';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -13,9 +13,10 @@ import { MovieVideosDescriptor } from '../types/movie-videos.type';
 export class MovieDetailComponent implements OnInit {
 
   public id: string;
-  public movie: MovieDetailDescriptor = new MovieDetailDescriptor();
-  public casting: MovieCreditsDescriptor = new MovieCreditsDescriptor();
-  public videos: MovieVideosDescriptor = new MovieVideosDescriptor();
+  public movie: MovieDetailDescriptor;
+  public casting: MovieCreditsDescriptor;
+  public cast: ActorSummaryDescriptor[] = [];
+  public videos: MovieVideosDescriptor;
 
 
   constructor(
@@ -43,7 +44,8 @@ export class MovieDetailComponent implements OnInit {
   getCreditsMovie(id: string) {
     this.movieService.getCreditsMovie(id)
       .subscribe(data => {
-        this.casting = data;
+          this.casting = data;
+          this.cast = this.casting.cast.slice(0, 12);
       }, error => {
         console.error(error);
       });
@@ -53,6 +55,7 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getVideosMovie(id)
       .subscribe(data => {
         this.videos = data;
+        console.log(this.videos);
       }, error => {
         console.error(error);
       });
@@ -60,6 +63,14 @@ export class MovieDetailComponent implements OnInit {
 
   tabChange(event) {
     // console.log(event);
+  }
+
+  changeSlide(event) {
+    if (!event.checked) {
+      this.cast = this.casting.cast.slice(0, 12);
+    } else {
+      this.cast = this.casting.cast;
+    }
   }
 
 }

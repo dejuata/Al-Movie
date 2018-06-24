@@ -9,9 +9,12 @@
   <div class="detail__container--two">
     <mat-tab-group mat-stretch-tabs class="detail__tabs" (selectedTabChange)="tabChange($event)">
       <mat-tab label="Casting">
+        <div fxLayout="row" fxLayoutAlign="end center" class="detail__slide">
+          <mat-slide-toggle (change)="changeSlide($event)">Full Cast</mat-slide-toggle>
+        </div>
         <div fxLayout="row wrap" fxLayoutAlign="space-between">
-          <ng-container *ngFor="let cast of casting.cast">
-            <app-actor-list-card [actor]="cast" [styleMovie]="true"></app-actor-list-card>
+          <ng-container *ngFor="let actor of cast">
+            <app-actor-list-card [actor]="actor" [styleMovie]="true"></app-actor-list-card>
           </ng-container>
         </div>
       </mat-tab>

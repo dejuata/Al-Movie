@@ -12,16 +12,14 @@ import { ActorImagesDescriptor } from '../types/actor-images.type';
 })
 export class ActorService {
 
-  private apiKey = '5421a9a38653bf083798a7f242aa143b';
-
   constructor(private http: HttpClient) { }
 
-  private url(apiKey: string, endpoint: string) {
-    return `https://api.themoviedb.org/3/person/${endpoint}?api_key=${apiKey}&language=en-US&page=1`;
+  private url(endpoint: string) {
+    return `https://api.themoviedb.org/3/person/${endpoint}`;
   }
 
   public getListActors(endpoint: string) {
-    return this.http.get(this.url(this.apiKey, endpoint))
+    return this.http.get(this.url(endpoint))
       .pipe(
         map(data => {
           return ActorListDescriptor.import(data);
@@ -30,7 +28,7 @@ export class ActorService {
   }
 
   public getDetailActor(id: string) {
-    return this.http.get(this.url(this.apiKey, id))
+    return this.http.get(this.url(id))
       .pipe(
         map(data => {
           return ActorDetailDescriptor.import(data);
@@ -39,7 +37,7 @@ export class ActorService {
   }
 
   public getCreditsActor(id: string) {
-    return this.http.get(this.url(this.apiKey, `${id}/movie_credits`))
+    return this.http.get(this.url(`${id}/movie_credits`))
       .pipe(
         map(data => {
           return ActorCreditsDescriptor.import(data);
@@ -48,7 +46,7 @@ export class ActorService {
   }
 
   public getImagesActor(id: string) {
-    return this.http.get(this.url(this.apiKey, `${id}/images`))
+    return this.http.get(this.url(`${id}/images`))
     .pipe(
       map(data => {
         // tslint:disable-next-line:prefer-const

@@ -18,13 +18,16 @@ $alt-accent:  mat-palette($mat-grey, 200);
 $alt-theme: mat-dark-theme($alt-primary, $alt-accent);
 
 .alternative {
-    @include angular-material-theme($alt-theme);
+  @include angular-material-theme($alt-theme);
 }
 
 body {
   margin: 0;
 }
-
+.a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
 .container  {
   width: 80%;
   margin: 0 auto;

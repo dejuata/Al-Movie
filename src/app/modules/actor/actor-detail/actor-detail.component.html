@@ -16,9 +16,11 @@
       <mat-tab label="Images">
         <div fxLayout="row wrap" fxLayoutAlign="space-between center">
           <ng-container *ngFor="let image of images.images">
-            <mat-card class="image__container">
-              <img mat-card-image src="{{image.file_path}}" alt="{{actor.header.title}}">
-            </mat-card>
+            <a href="{{image.file_url}}" target="_blank">
+              <mat-card class="image__container">
+                <img mat-card-image src="{{image.file_path}}" alt="{{actor.header.title}}">
+              </mat-card>
+            </a>
           </ng-container>
         </div>
       </mat-tab>

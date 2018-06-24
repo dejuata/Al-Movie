@@ -3,6 +3,8 @@
     frameborder="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true">
   </iframe>
   <mat-card-footer>
-    <mat-card-title class="video__title">{{ video.name }}</mat-card-title>
+    <a href="{{video.url_youtube}}" target="_blank" class="a">
+      <mat-card-title class="video__title">{{ video.name }}</mat-card-title>
+    </a>
   </mat-card-footer>
 </mat-card>

@@ -7,8 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 
 // Flex
 import { FlexLayoutModule } from '@angular/flex-layout';
-// Pipes
-// import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 // Material
 import { MatCardModule } from '@angular/material/card';
@@ -34,7 +32,6 @@ import { ActorDetailComponent } from './actor-detail/actor-detail.component';
     ActorListCardComponent,
     ActorDetailComponent,
     // MovieListCardComponent,
-    // TruncatePipe
   ],
   exports: [
     ActorListCardComponent

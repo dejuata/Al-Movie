@@ -25,8 +25,8 @@ export class MovieListComponent implements OnInit {
     this.getListMovies(this.option);
   }
 
-  changeSlide() {
-    this.checkedSlide = this.checkedSlide ? false : true;
+  changeSlide(event) {
+    this.checkedSlide = event.checked;
   }
 
   getListMovies(opt: string) {
