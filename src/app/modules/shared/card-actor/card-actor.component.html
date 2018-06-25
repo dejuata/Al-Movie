@@ -1,0 +1,21 @@
+<mat-card [ngClass]="{
+  'actor__card--movie': styleMovie,
+  'actor__card': !styleMovie
+}">
+  <a routerLink="/actors/{{ actor.id }}">
+    <img mat-card-image src="{{ actor.profile_path }}" alt="{{ actor.name }}">
+  </a>
+  <mat-card-footer>
+    <mat-card-title [ngClass]="{
+      'actor__card--movie-title': styleMovie,
+      'actor__card-title': !styleMovie
+    }">
+      <a routerLink="/actors/{{ actor.id }}" class="a">
+        {{ actor.name }}
+      </a>
+    </mat-card-title>
+    <mat-card-subtitle *ngIf="styleMovie" class="actor__card--movie-subtitle">
+      {{ actor.character }}
+    </mat-card-subtitle>
+  </mat-card-footer>
+</mat-card>

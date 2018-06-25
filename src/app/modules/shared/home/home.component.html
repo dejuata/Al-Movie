@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div fxLayout="row" fxLayoutAlign="space-between" style="padding: 1rem 0 3rem;">
+
+    <div class="home__container--one">
+      <div fxLayout="column">
+        <h2>Top 5 Popular People</h2>
+        <ng-container *ngFor="let actor of actors">
+          <app-actor-home-top5 [actor]="actor"></app-actor-home-top5>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="home__container--two">
+      <div fxLayout="column">
+        <h2>In Theaters</h2>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <ng-container *ngFor="let movie of theatersMovies">
+            <app-card-movie [movie]="movie" [compactView]="true"></app-card-movie>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div fxLayout="column">
+    <h3>The most popular movies of the previous year</h3>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <ng-container *ngFor="let movie of movies">
+        <app-card-movie [movie]="movie" [compactView]="true"></app-card-movie>
+      </ng-container>
+    </div>
+  </div>
+
+
+</div>

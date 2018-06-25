@@ -6,7 +6,7 @@
 
   <div fxLayout="row wrap" fxLayoutAlign="space-between">
     <ng-container *ngFor="let movie of movies.movies">
-      <app-movie-list-card [movie]="movie" [compactView]="checkedSlide"></app-movie-list-card>
+      <app-card-movie [movie]="movie" [compactView]="checkedSlide"></app-card-movie>
     </ng-container>
   </div>
 

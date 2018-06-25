@@ -5,6 +5,7 @@ import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
 import { MovieVideosDescriptor } from '../types/movie-videos.type';
 import { ActorSummaryDescriptor } from '../../actor/types/actor-list.type';
+import { MovieRecommendationDescriptor } from '../types/movie-recommendation.type';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -17,6 +18,7 @@ export class MovieDetailComponent implements OnInit {
   public casting: MovieCreditsDescriptor;
   public cast: ActorSummaryDescriptor[] = [];
   public videos: MovieVideosDescriptor;
+  public recommendation: MovieRecommendationDescriptor[] = [];
 
 
   constructor(
@@ -27,6 +29,7 @@ export class MovieDetailComponent implements OnInit {
     this.getDetailMovie(this.id);
     this.getCreditsMovie(this.id);
     this.getVideosMovie(this.id);
+    this.getRecommendationsMovie(this.id);
   }
 
   ngOnInit() {
@@ -55,7 +58,16 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getVideosMovie(id)
       .subscribe(data => {
         this.videos = data;
-        console.log(this.videos);
+      }, error => {
+        console.error(error);
+      });
+  }
+
+  getRecommendationsMovie(id: string) {
+    this.movieService.getRecommendationsMovie(id)
+      .subscribe(data => {
+        this.recommendation = data.recommendation;
+        console.log(this.recommendation);
       }, error => {
         console.error(error);
       });

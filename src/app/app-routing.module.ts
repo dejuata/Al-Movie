@@ -3,11 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  },
-  {
     path: 'movies',
     loadChildren: './modules/movie/movie.module#MovieModule'
   },

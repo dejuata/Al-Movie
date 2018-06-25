@@ -3,7 +3,7 @@
     <div class="container" fxLayoutAlign="space-between center">
 
       <div class="detail__poster">
-        <img class="detail__poster-image" src="{{ data.poster_path }}" alt="">
+        <img class="detail__poster-image" src="{{ data.poster_path }}" alt="{{ data.title }}">
       </div>
 
       <div class="detail__info" [ngStyle]="{color: data.subtitle == 'Overview' ? '#fff' : 'rgba(0, 0, 0, 0.87)' }">

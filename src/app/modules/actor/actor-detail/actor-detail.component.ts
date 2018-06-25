@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActorService } from '../services/actor.service';
 import { ActivatedRoute } from '@angular/router';
 import { ActorDetailDescriptor } from '../types/actor-detail.type';
-import { ActorCreditsDescriptor } from '../types/actor-credits.type';
+import { ActorCreditsDescriptor, CastDescriptor } from '../types/actor-credits.type';
 import { ActorImagesDescriptor } from '../types/actor-images.type';
 
 @Component({
@@ -15,6 +15,7 @@ export class ActorDetailComponent implements OnInit {
   public id: string;
   public actor: ActorDetailDescriptor;
   public casting: ActorCreditsDescriptor;
+  public cast: CastDescriptor[] = [];
   public images: ActorImagesDescriptor;
 
   constructor(
@@ -43,6 +44,8 @@ export class ActorDetailComponent implements OnInit {
     this.actorService.getCreditsActor(id)
       .subscribe(data => {
         this.casting = data;
+        console.log(this.casting);
+        this.cast = this.casting.cast.slice(0, 8);
       }, error => {
         console.error(error);
       });
@@ -55,5 +58,13 @@ export class ActorDetailComponent implements OnInit {
       }, error => {
         console.error(error);
       });
+  }
+
+  changeSlide(event) {
+    if (!event.checked) {
+      this.cast = this.casting.cast.slice(0, 8);
+    } else {
+      this.cast = this.casting.cast;
+    }
   }
 }

@@ -7,10 +7,13 @@
   <div class="detail__container--two">
     <mat-tab-group mat-stretch-tabs class="detail__tabs">
       <mat-tab label="Known For">
+        <div fxLayout="row" fxLayoutAlign="end center" class="detail__slide">
+          <mat-slide-toggle (change)="changeSlide($event)">Full Movies</mat-slide-toggle>
+        </div>
         <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <!-- <ng-container *ngFor="let cast of casting.cast">
-            <app-movie-list-card [movie]="cast" [compactView]="true" [styleActor]="true"></app-movie-list-card>
-          </ng-container> -->
+          <ng-container *ngFor="let movie of cast">
+            <app-card-movie [movie]="movie" [compactView]="true" [styleActor]="true"></app-card-movie>
+          </ng-container>
         </div>
       </mat-tab>
       <mat-tab label="Images">

@@ -11,12 +11,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // Material
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Components
 import { ActorListComponent } from './actor-list/actor-list.component';
-import { ActorListCardComponent } from './actor-list-card/actor-list-card.component';
 import { ActorDetailComponent } from './actor-detail/actor-detail.component';
-// import { MovieListCardComponent } from '../movie/movie-list-card/movie-list-card.component';
 
 @NgModule({
   imports: [
@@ -26,15 +25,13 @@ import { ActorDetailComponent } from './actor-detail/actor-detail.component';
     MatCardModule,
     MatTabsModule,
     SharedModule,
+    MatSlideToggleModule
   ],
   declarations: [
     ActorListComponent,
-    ActorListCardComponent,
     ActorDetailComponent,
-    // MovieListCardComponent,
   ],
   exports: [
-    ActorListCardComponent
   ]
 })
 export class ActorModule { }

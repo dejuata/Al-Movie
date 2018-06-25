@@ -5,6 +5,7 @@ import { MovieListDescriptor } from '../types/movie-list.type';
 import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
 import { MovieVideosDescriptor } from '../types/movie-videos.type';
+import { MovieRecommendationsDescriptor } from '../types/movie-recommendation.type';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,24 @@ export class MovieService {
       .pipe(
         map(data => {
           return MovieVideosDescriptor.import(data);
+        })
+      );
+  }
+
+  public getRecommendationsMovie(id: string) {
+    return this.http.get(this.url(`${id}/recommendations`))
+      .pipe(
+        map(data => {
+          return MovieRecommendationsDescriptor.import(data);
+        })
+      );
+  }
+
+  public getDiscoverMovie() {
+    return this.http.get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&year=2017')
+      .pipe(
+        map(data => {
+          return MovieListDescriptor.import(data);
         })
       );
   }

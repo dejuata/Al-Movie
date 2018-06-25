@@ -1,3 +1,5 @@
+import { TruncatePipe } from '../../../pipes/truncate.pipe';
+
 export class ActorListDescriptor {
   public paginator: ActorPaginatorDescriptor;
   public actors: ActorSummaryDescriptor[] = [];
@@ -44,15 +46,19 @@ export class ActorSummaryDescriptor {
   public id: number;
   public name: string;
   public profile_path: string;
+  public character: string;
 
   public static import(rawData: any) {
     // tslint:disable-next-line:prefer-const
     let actor: ActorSummaryDescriptor = new ActorSummaryDescriptor();
     const profile_path_url = 'https://image.tmdb.org/t/p/w235_and_h235_face/';
     const profile_path_url_default = 'https://icdn-0.motor1.com/custom/share/default-user.png';
+    // tslint:disable-next-line:prefer-const
+    let truncate: TruncatePipe = new TruncatePipe();
 
     actor.id = rawData.hasOwnProperty('id') ? rawData.id : 0;
     actor.name = rawData.hasOwnProperty('name') ? rawData.name : '';
+    actor.character = rawData.hasOwnProperty('character') ? truncate.transform(rawData.character, '13') : '';
     actor.profile_path = rawData.hasOwnProperty('profile_path') && rawData.profile_path != null ?
       `${profile_path_url}${rawData.profile_path}` : profile_path_url_default;
 

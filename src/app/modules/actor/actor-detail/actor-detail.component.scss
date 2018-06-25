@@ -7,9 +7,12 @@
       width: 70%;
     }
   }
-}
-.detail__tabs {
-  width: 100%;
+  &__slide {
+    padding: 2rem 0;
+  }
+  &__tabs {
+    width: 100%;
+  }
 }
 
 .mat-card {

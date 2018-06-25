@@ -40,7 +40,11 @@ export class ActorService {
     return this.http.get(this.url(`${id}/movie_credits`))
       .pipe(
         map(data => {
-          return ActorCreditsDescriptor.import(data);
+          // tslint:disable-next-line:prefer-const
+          let result = ActorCreditsDescriptor.import(data);
+          // order movies by vote_count
+          this.sortDataActor(result.cast, 'vote_count');
+          return result;
         })
       );
   }
@@ -51,18 +55,22 @@ export class ActorService {
       map(data => {
         // tslint:disable-next-line:prefer-const
         let result: ActorImagesDescriptor = ActorImagesDescriptor.import(data);
-
-        result.images.sort((a, b) => {
-          if (a.vote_average < b.vote_average) {
-            return 1;
-          } else if (a.vote_average > b.vote_average) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
+        // order images by vote_average
+        this.sortDataActor(result.images, 'vote_average');
         return result;
       })
     );
+  }
+
+  private sortDataActor(lst: any, key: string) {
+    lst.sort((a, b) => {
+      if (a[key] < b[key]) {
+        return 1;
+      } else if (a[key] > b[key]) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   }
 }

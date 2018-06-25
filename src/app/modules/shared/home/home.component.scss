@@ -1,0 +1,10 @@
+.home {
+  &__container--one {
+    width: 30%;
+    padding: 0 2rem 0 0;
+  }
+  &__container--two {
+    width: 70%;
+    padding: 0 0 0 2rem;
+  }
+}

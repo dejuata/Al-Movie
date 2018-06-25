@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutComponent } from './layout.component';
+import { ActorHomeTop5Component } from './actor-home-top5.component';
 
-describe('LayoutComponent', () => {
-  let component: LayoutComponent;
-  let fixture: ComponentFixture<LayoutComponent>;
+describe('ActorHomeTop5Component', () => {
+  let component: ActorHomeTop5Component;
+  let fixture: ComponentFixture<ActorHomeTop5Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutComponent ]
+      declarations: [ ActorHomeTop5Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutComponent);
+    fixture = TestBed.createComponent(ActorHomeTop5Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

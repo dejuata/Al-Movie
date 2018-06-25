@@ -2,7 +2,7 @@
   <h2 class="list__title">Popular People</h2>
   <div fxLayout="row wrap" fxLayoutAlign="space-between">
     <ng-container *ngFor="let actor of actors.actors">
-      <app-actor-list-card [actor]="actor"></app-actor-list-card>
+      <app-card-actor [actor]="actor"></app-card-actor>
     </ng-container>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">

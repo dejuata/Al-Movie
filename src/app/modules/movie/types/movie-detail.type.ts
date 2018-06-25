@@ -41,7 +41,6 @@ export class MovieDetailDescriptor {
         }
     }
 
-
     return movie;
   }
 
@@ -118,3 +117,5 @@ export class GenreDescriptor {
     return movie;
   }
 }
+
+
