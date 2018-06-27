@@ -1,9 +1,16 @@
 .detail {
+  &__container--one {
+    width: 30%;
+  }
+  &__container--two {
+    width: 70%;
+  }
   &__cover {
     background: no-repeat center;
     background-position: 50% 50%;
     background-size: cover;
-    height: 450px;
+    // height: 450px;
+    height: auto;
     width: 100%;
     position: relative;
     z-index: -1;
@@ -19,6 +26,7 @@
     height: 400px;
     position: relative;
     z-index: 2;
+    margin-top: 2rem;
     &-image {
       height: 100%;
     }

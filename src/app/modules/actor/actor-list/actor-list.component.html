@@ -6,6 +6,9 @@
     </ng-container>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">
-    <app-paginator [length]="actors.paginator.total_pages" [pageSize]="actors.paginator.page_size"></app-paginator>
+    <app-paginator [length]="actors.paginator.total_pages"
+      [pageSize]="actors.paginator.page_size"
+      (pageIndex)="listenPaginator($event)">
+    </app-paginator>
   </div>
 </div>

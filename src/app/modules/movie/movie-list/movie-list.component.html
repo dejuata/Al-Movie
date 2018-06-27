@@ -11,6 +11,10 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <app-paginator [length]="movies.paginator.total_pages" [pageSize]="movies.paginator.page_size"></app-paginator>
+    <app-paginator
+      [length]="movies.paginator.total_pages"
+      [pageSize]="movies.paginator.page_size"
+      (pageIndex)="listenPaginator($event)">
+    </app-paginator>
   </div>
 </div>

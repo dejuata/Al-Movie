@@ -18,7 +18,8 @@ export class ActorService {
     return `https://api.themoviedb.org/3/person/${endpoint}`;
   }
 
-  public getListActors(endpoint: string) {
+  public getListActors(endpoint: string, page: number) {
+    endpoint = `${endpoint}?page=${page}`;
     return this.http.get(this.url(endpoint))
       .pipe(
         map(data => {

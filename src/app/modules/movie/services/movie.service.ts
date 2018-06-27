@@ -18,7 +18,8 @@ export class MovieService {
     return `https://api.themoviedb.org/3/movie/${endpoint}`;
   }
 
-  public getListMovies(endpoint: string) {
+  public getListMovies(endpoint: string, page: number) {
+    endpoint = `${endpoint}?page=${page}`;
     return this.http.get(this.url(endpoint))
       .pipe(
         map(data => {

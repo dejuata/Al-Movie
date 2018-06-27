@@ -15,9 +15,11 @@ export class AppInterceptor implements HttpInterceptor {
       setParams: {
         api_key: token,
         language: 'en-US',
-        page: '1'
+        // page: '1'
       }
     });
+
+    console.log(request);
 
     return next.handle(request);
   }
