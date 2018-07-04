@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActorService } from '../services/actor.service';
 import { ActivatedRoute } from '@angular/router';
 import { ActorDetailDescriptor } from '../types/actor-detail.type';
-import { ActorCreditsDescriptor, CastDescriptor } from '../types/actor-credits.type';
+import { ActorCreditsDescriptor } from '../types/actor-credits.type';
 import { ActorImagesDescriptor } from '../types/actor-images.type';
+import { MovieSummaryDescriptor } from '../../movie/types/movie-list.type';
 
 @Component({
   selector: 'app-actor-detail',
@@ -15,8 +16,8 @@ export class ActorDetailComponent implements OnInit {
   public id: string;
   public actor: ActorDetailDescriptor;
   public casting: ActorCreditsDescriptor;
-  public cast: CastDescriptor[] = [];
-  public images: ActorImagesDescriptor;
+  public cast: MovieSummaryDescriptor[] = [];
+  public images: ActorImagesDescriptor = new ActorImagesDescriptor;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,6 @@ export class ActorDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getDetailActor(this.id);
     this.getCreditsActor(this.id);
-    this.getImagesActor(this.id);
   }
 
   ngOnInit() {
@@ -44,7 +44,6 @@ export class ActorDetailComponent implements OnInit {
     this.actorService.getCreditsActor(id)
       .subscribe(data => {
         this.casting = data;
-        console.log(this.casting);
         this.cast = this.casting.cast.slice(0, 8);
       }, error => {
         console.error(error);
@@ -65,6 +64,13 @@ export class ActorDetailComponent implements OnInit {
       this.cast = this.casting.cast.slice(0, 8);
     } else {
       this.cast = this.casting.cast;
+    }
+  }
+
+  tabChange(event) {
+    if (event.tab.textLabel === 'Images' && this.images.images.length === 0) {
+      this.getImagesActor(this.id);
+      console.log(this.images);
     }
   }
 }

@@ -9,6 +9,7 @@ export class CardActorComponent implements OnInit {
 
   @Input() actor;
   @Input() styleMovie;
+  @Input() hideName;
 
   constructor() { }
 

@@ -26,3 +26,19 @@
     margin-bottom: 0.5rem !important;
   }
 }
+
+.movie__card--actor {
+  &-container {
+    padding: 0;
+    overflow: hidden;
+    height: 225px;
+    text-align: center;
+  }
+  &-image {
+    width: 150px;
+  }
+  &-title{
+    margin-bottom: 0 !important;
+    font-size: 1rem;
+  }
+}

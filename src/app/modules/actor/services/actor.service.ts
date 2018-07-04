@@ -44,7 +44,7 @@ export class ActorService {
           // tslint:disable-next-line:prefer-const
           let result = ActorCreditsDescriptor.import(data);
           // order movies by vote_count
-          this.sortDataActor(result.cast, 'vote_count');
+          this.sortData(result.cast, 'vote_count');
           return result;
         })
       );
@@ -57,13 +57,13 @@ export class ActorService {
         // tslint:disable-next-line:prefer-const
         let result: ActorImagesDescriptor = ActorImagesDescriptor.import(data);
         // order images by vote_average
-        this.sortDataActor(result.images, 'vote_average');
+        this.sortData(result.images, 'vote_average');
         return result;
       })
     );
   }
 
-  private sortDataActor(lst: any, key: string) {
+  public sortData(lst: any, key: string) {
     lst.sort((a, b) => {
       if (a[key] < b[key]) {
         return 1;

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Flex
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -15,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // Pipes
 import { KeysPipe } from '../../pipes/keys.pipe';
@@ -25,7 +27,7 @@ import { ActorHomeTop5Component } from '../actor/actor-home-top5/actor-home-top5
 
 // Component
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { DetailInfoComponent } from './detail-info/detail-info.component';
 import { DetailHeaderComponent } from './detail-header/detail-header.component';
@@ -33,6 +35,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardMovieComponent } from './card-movie/card-movie.component';
 import { CardActorComponent } from './card-actor/card-actor.component';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 @NgModule({
   imports: [
@@ -47,11 +50,14 @@ import { CardActorComponent } from './card-actor/card-actor.component';
     FlexLayoutModule,
     MatPaginatorModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    DragScrollModule
   ],
   declarations: [
     HomeComponent,
-    HeaderComponent,
+    NavbarComponent,
     SearchComponent,
     KeysPipe,
     LinkifystrPipe,
@@ -64,7 +70,7 @@ import { CardActorComponent } from './card-actor/card-actor.component';
     CardActorComponent
   ],
   exports: [
-    HeaderComponent,
+    NavbarComponent,
     SearchComponent,
     CardMovieComponent,
     CardActorComponent,

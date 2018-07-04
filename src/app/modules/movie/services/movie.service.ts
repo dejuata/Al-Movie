@@ -64,8 +64,17 @@ export class MovieService {
       );
   }
 
-  public getDiscoverMovie() {
-    return this.http.get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&year=2017')
+  public getDiscoverMovie(value: string) {
+    const url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc`;
+    const geners = {
+      'action': 28,
+      'animation': 16,
+      'family': 10751,
+      'horror': 27,
+      'romance': 10749,
+      'thriller': 53
+    };
+    return this.http.get(`${url}&with_genres=${geners[value]}`)
       .pipe(
         map(data => {
           return MovieListDescriptor.import(data);

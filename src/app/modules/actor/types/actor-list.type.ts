@@ -47,11 +47,12 @@ export class ActorSummaryDescriptor {
   public name: string;
   public profile_path: string;
   public character: string;
+  public vote_count: number;
 
-  public static import(rawData: any) {
+  public static import(rawData: any, profile_path_url = 'https://image.tmdb.org/t/p/w235_and_h235_face') {
     // tslint:disable-next-line:prefer-const
     let actor: ActorSummaryDescriptor = new ActorSummaryDescriptor();
-    const profile_path_url = 'https://image.tmdb.org/t/p/w235_and_h235_face/';
+    // const profile_path_url = 'https://image.tmdb.org/t/p/w235_and_h235_face';
     const profile_path_url_default = 'https://icdn-0.motor1.com/custom/share/default-user.png';
     // tslint:disable-next-line:prefer-const
     let truncate: TruncatePipe = new TruncatePipe();
@@ -61,6 +62,7 @@ export class ActorSummaryDescriptor {
     actor.character = rawData.hasOwnProperty('character') ? truncate.transform(rawData.character, '13') : '';
     actor.profile_path = rawData.hasOwnProperty('profile_path') && rawData.profile_path != null ?
       `${profile_path_url}${rawData.profile_path}` : profile_path_url_default;
+    actor.vote_count = rawData.hasOwnProperty('popularity') ? rawData.popularity : 0;
 
     return actor;
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MovieService } from '../services/movie.service';
 import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
@@ -17,7 +17,7 @@ export class MovieDetailComponent implements OnInit {
   public movie: MovieDetailDescriptor;
   public casting: MovieCreditsDescriptor;
   public cast: ActorSummaryDescriptor[] = [];
-  public videos: MovieVideosDescriptor;
+  public videos: MovieVideosDescriptor = new MovieVideosDescriptor;
   public recommendation: MovieRecommendationDescriptor[] = [];
 
 
@@ -25,11 +25,12 @@ export class MovieDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private movieService: MovieService
   ) {
-    this.id = this.route.snapshot.params['id'];
-    this.getDetailMovie(this.id);
-    this.getCreditsMovie(this.id);
-    this.getVideosMovie(this.id);
-    this.getRecommendationsMovie(this.id);
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = params.get('id');
+      this.getDetailMovie(this.id);
+      this.getCreditsMovie(this.id);
+      this.getRecommendationsMovie(this.id);
+    });
   }
 
   ngOnInit() {
@@ -67,14 +68,16 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getRecommendationsMovie(id)
       .subscribe(data => {
         this.recommendation = data.recommendation;
-        console.log(this.recommendation);
       }, error => {
         console.error(error);
       });
   }
 
   tabChange(event) {
-    // console.log(event);
+    if (event.tab.textLabel === 'Trailers' && this.videos.trailer.length === 0) {
+      this.getVideosMovie(this.id);
+      console.log(this.videos);
+    }
   }
 
   changeSlide(event) {

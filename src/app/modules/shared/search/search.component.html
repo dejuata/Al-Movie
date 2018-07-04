@@ -1,11 +1,31 @@
 <div class="search-container alternative">
-    <mat-form-field class="search-form">
-        <button class="search-btn" mat-button *ngIf="value" matPrefix mat-icon-button  (click)="value=''">
-            <mat-icon>search</mat-icon>
-        </button>
-        <input matInput type="text" placeholder="Search your favorite movies, series and actors" class="search-input"/>
-        <button class="search-btn" mat-button *ngIf="value" matSuffix mat-icon-button  (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
+
+  <mat-form-field class="search-form">
+    <button class="search-btn" mat-button matPrefix mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <input type="text" placeholder="Search your favorite movies and actors" class="search-input"
+      matInput [formControl]="searchTerm" [matAutocomplete]="auto" [(ngModel)]="value">
+
+    <button class="search-btn" mat-button matSuffix mat-icon-button (click)="clearResults()">
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <mat-autocomplete #auto="matAutocomplete" class="mat-autocomplete-panel">
+      <div fxLayout="row wrap" fxLayoutAlign="space-evenly">
+        <mat-option *ngFor="let item of searchResult" [value]="item.title || item.name">
+          <div fxLayout="row" fxLayoutAlign="center">
+            <ng-container *ngIf="item.name; else card_movie">
+              <app-card-actor [actor]="item" [styleMovie]="true" [hideName]="true"></app-card-actor>
+            </ng-container>
+            <ng-template #card_movie>
+              <app-card-movie [movie]="item" [compactView]="true" [styleActor]="true"></app-card-movie>
+            </ng-template>
+          </div>
+        </mat-option>
+      </div>
+    </mat-autocomplete>
+  </mat-form-field>
+
 </div>

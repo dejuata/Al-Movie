@@ -1,4 +1,33 @@
 .home {
+  &__cover {
+    height: 282px;
+    width: 500px;
+    background: no-repeat center;
+    background-size: cover;
+    position: relative;
+    transition: .3s;
+    // z-index: -1;
+  }
+  &__shadow {
+    height: 282px;
+    width: 500px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+
+  }
+  &__info {
+    padding: 2rem;
+  }
+  &__title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  &__subtitle {
+    margin: 0;
+    color: #fff;
+  }
   &__container--one {
     width: 30%;
     padding: 0 2rem 0 0;
@@ -6,5 +35,18 @@
   &__container--two {
     width: 70%;
     padding: 0 0 0 2rem;
+  }
+  &__card{
+    margin: -2rem 0 0;
+    padding: 1rem;
+  }
+  &__carousel {
+    height: 320px;
+    // height: 310px;
+
+    // overflow-x: hidden !important;
+  }
+  &__carousel-header{
+    overflow-x: hidden !important;
   }
 }

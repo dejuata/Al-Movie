@@ -1,21 +1,34 @@
-<mat-card [ngClass]="{
-  'actor__card--movie': styleMovie,
-  'actor__card': !styleMovie
-}">
-  <a routerLink="/actors/{{ actor.id }}">
-    <img mat-card-image src="{{ actor.profile_path }}" alt="{{ actor.name }}">
-  </a>
-  <mat-card-footer>
-    <mat-card-title [ngClass]="{
-      'actor__card--movie-title': styleMovie,
-      'actor__card-title': !styleMovie
-    }">
-      <a routerLink="/actors/{{ actor.id }}" class="a">
-        {{ actor.name }}
-      </a>
-    </mat-card-title>
-    <mat-card-subtitle *ngIf="styleMovie" class="actor__card--movie-subtitle">
-      {{ actor.character }}
-    </mat-card-subtitle>
-  </mat-card-footer>
-</mat-card>
+<ng-container *ngIf="!hideName; else card_search">
+  <mat-card [ngClass]="{
+    'actor__card--movie': styleMovie,
+    'actor__card': !styleMovie
+  }">
+    <a routerLink="/actors/{{ actor.id }}">
+      <img mat-card-image src="{{ actor.profile_path }}" alt="{{ actor.name }}">
+    </a>
+    <mat-card-footer>
+      <mat-card-title [ngClass]="{
+              'actor__card--movie-title': styleMovie,
+              'actor__card-title': !styleMovie
+            }">
+        <a routerLink="/actors/{{ actor.id }}" class="a">
+          {{ actor.name }}
+        </a>
+      </mat-card-title>
+      <mat-card-subtitle *ngIf="styleMovie" class="actor__card--movie-subtitle">
+        {{ actor.character }}
+      </mat-card-subtitle>
+    </mat-card-footer>
+  </mat-card>
+</ng-container>
+
+<ng-template #card_search>
+  <mat-card fxLayout="column" fxLayoutAlign="center" class="movie__card--actor-container">
+    <a routerLink="/actors/{{ actor.id }}" style="line-height: 0">
+      <img class="movie__card--actor-image" src="{{ actor.profile_path }}" alt="{{ actor.name }}">
+    </a>
+    <a routerLink="/actors/{{ actor.id }}" class="a movie__card--actor-title">
+      {{ actor.name }}
+    </a>
+  </mat-card>
+</ng-template>
