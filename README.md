@@ -1,6 +1,25 @@
 # AlMovie
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+In this project the knowledge acquired during the course of Angular 4 offered by the company AlertLogic is implemented.
+The course covered the following topics:
+
+- Components
+- Directives
+- Pipes
+- Observables
+- Routing & Navigation
+- Api Rest
+- Descriptor
+- Services
+
+
+Basically the project is a SPA that consumes the api provided by The Movie Database. In this you can see the most popular movies of different genres, check its detail and see the actors who worked on it. In addition to being able to save your favorite movies and actors.
+
+The app consists of three main modules, actors, movies and user authentication through firebase, in the same way the persistence of data is through this.
+
+## Demo
+
+https://dejuata.github.io/Al-Movie/movies
 
 ## Development server
 
@@ -14,14 +33,4 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
