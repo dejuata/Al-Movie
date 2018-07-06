@@ -19,7 +19,7 @@ The app consists of three main modules, actors, movies and user authentication t
 
 ## Demo
 
-https://dejuata.github.io/Al-Movie/movies
+https://dejuata.github.io/Al-Movie/
 
 ## Development server
 
