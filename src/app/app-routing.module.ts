@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'actors',
     loadChildren: './modules/actor/actor.module#ActorModule'
+  },
+  {
+    path: 'user',
+    loadChildren: './modules/auth/auth.module#AuthModule'
   }
 ];
 

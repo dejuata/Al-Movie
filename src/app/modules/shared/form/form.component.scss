@@ -1,0 +1,16 @@
+.form {
+  &__container {
+    width: 50%;
+    margin: 11.5rem auto 0;
+    text-align: center;
+    background-color: rgb(244, 244, 244);
+    padding: 2rem;
+    border-radius: 2px;
+  }
+  &__title {
+    margin-top: 0;
+  }
+  &__btn {
+    margin-bottom: 1rem;
+  }
+}

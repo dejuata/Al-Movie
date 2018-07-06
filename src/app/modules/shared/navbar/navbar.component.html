@@ -16,10 +16,28 @@
 
     <span class="nav-spacer"></span>
 
-    <button mat-button>
-      <mat-icon class="example-icon">input</mat-icon>
-      Ingresar
-    </button>
+    <ng-container *ngIf="!loggedIn">
+      <button mat-button routerLink="/user/login">
+        <mat-icon class="example-icon">people</mat-icon>
+        Login
+      </button>
+
+      <button mat-button routerLink="/user/register">
+        <mat-icon class="example-icon">rowing</mat-icon>
+        Sign Up
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="loggedIn">
+      <button mat-button routerLink="/user/favorites">
+        <mat-icon class="example-icon">favorite</mat-icon>
+        Favorites
+      </button>
+      <button mat-button (click)="logout()">
+        <mat-icon class="example-icon">input</mat-icon>
+        Logout
+      </button>
+    </ng-container>
+
   </mat-toolbar-row>
 </mat-toolbar>
-

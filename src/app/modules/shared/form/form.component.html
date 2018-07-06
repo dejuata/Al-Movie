@@ -1,0 +1,38 @@
+<div class="container">
+  <div fxLayout="column" class="form__container">
+    <h2 class="form__title">Welcome to Al Movie</h2>
+    <mat-form-field>
+      <input matInput [formControl]="emailFormControl" placeholder="Email" [(ngModel)]="data.email" (ngModelChange)="checkData()">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [formControl]="passwordFormControl" type="password" placeholder="Password" [(ngModel)]="data.password" (ngModelChange)="checkData()">
+      <mat-error *ngIf="passwordFormControl.hasError('minLength')">
+        The password must have a minimum of
+        <strong>6 characters</strong>
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button color="primary" class="form__btn" value="" (click)="sendData()" [disabled]="disabled">
+      <ng-container *ngIf="login; else register">
+        Login
+      </ng-container>
+      <ng-template #register>
+        Register
+      </ng-template>
+    </button>
+    <button mat-raised-button class="form__btn">Cancel</button>
+  </div>
+</div>

@@ -11,9 +11,19 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppInterceptor } from './app.interceptor';
 
+// Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { DurationTimePipe } from './pipes/duration-time.pipe';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TruncatePipe,
+    DurationTimePipe
   ],
   imports: [
     BrowserModule,
@@ -21,7 +31,10 @@ import { AppInterceptor } from './app.interceptor';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   providers: [
     {

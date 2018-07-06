@@ -9,20 +9,22 @@
       </div>
 
       <div class="detail__container--two">
-        <div class="detail__info" [ngStyle]="{color: data.subtitle == 'Overview' ? '#fff' : 'rgba(0, 0, 0, 0.87)' }">
-          <div class="detail__info-title">
-            <h2>{{ data.title }}</h2>
+        <div fxLayout="column" fxLayoutAlign="space-around center" class="detail__info" [ngStyle]="{color: data.subtitle == 'Overview' ? '#fff' : 'rgba(0, 0, 0, 0.87)' }">
+          <div>
+            <div class="detail__info-title">
+              <h2>{{ data.title }}</h2>
+            </div>
+            <div class="detail__info-subtitle">
+              <h3>{{ data.subtitle }}</h3>
+            </div>
+            <div class="detail__info-summary">
+              <p>{{ data.summary }}</p>
+            </div>
           </div>
-          <div class="detail__info-subtitle">
-            <h3>{{ data.subtitle }}</h3>
-          </div>
-          <div class="detail__info-summary">
-            <p>{{ data.summary }}</p>
+          <div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
-

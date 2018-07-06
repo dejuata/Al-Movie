@@ -5,6 +5,8 @@ import { ActorDetailDescriptor } from '../types/actor-detail.type';
 import { ActorCreditsDescriptor } from '../types/actor-credits.type';
 import { ActorListDescriptor } from '../types/actor-list.type';
 import { ActorImagesDescriptor } from '../types/actor-images.type';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FavoriteDescriptor, FavoriteListDescriptor } from '../../shared/types/favorite.type';
 
 
 @Injectable({
@@ -12,7 +14,11 @@ import { ActorImagesDescriptor } from '../types/actor-images.type';
 })
 export class ActorService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private afDB: AngularFireDatabase) {
+
+    }
 
   private url(endpoint: string) {
     return `https://api.themoviedb.org/3/person/${endpoint}`;
@@ -61,6 +67,28 @@ export class ActorService {
         return result;
       })
     );
+  }
+
+  public saveFavoriteActor(actor) {
+    this.afDB.database.ref(`actors/${actor.id}`).set(actor);
+  }
+
+  public getFavoriteActor(id: string) {
+    return this.afDB.object(`actors/${id}`).valueChanges()
+      .pipe(
+        map(data => {
+          return FavoriteDescriptor.import(data);
+        })
+      );
+  }
+
+  public getFavoriteActors() {
+    return this.afDB.list('actors').valueChanges()
+      .pipe(
+        map(data => {
+          return FavoriteListDescriptor.import(data);
+        })
+      );
   }
 
   public sortData(lst: any, key: string) {

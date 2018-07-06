@@ -1,7 +1,5 @@
 <div class="detail__info" fxLayout="row">
-
   <mat-list role="list">
-
     <ng-container *ngFor="let item of info | keys">
       <mat-list-item role="listitem">
         <strong>{{ item.key | titlecase }}: </strong>
@@ -28,6 +26,13 @@
       </mat-list-item>
     </ng-container>
 
+    <mat-list-item role="listitem" style="margin-top: 3rem;">
+      <ng-container *ngIf="loggedIn">
+        <mat-checkbox color="warn" (change)="listenCheckbox($event)" [checked]="favorite">
+          <strong>Add to Favorite</strong>
+        </mat-checkbox>
+      </ng-container>
+    </mat-list-item>
+
   </mat-list>
 </div>
-

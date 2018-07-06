@@ -3,7 +3,7 @@
 <div fxLayout="row" fxlayoutalign="space-between center" class="container">
 
   <div class="detail__container--one">
-    <app-detail-info [info]="movie.info" [genres]="movie.genres"></app-detail-info>
+    <app-detail-info [info]="movie.info" [genres]="movie.genres" (saveFavorite)="listenFavorite($event)" [favorite]="favorite.favorite"></app-detail-info>
   </div>
 
   <div class="detail__container--two">

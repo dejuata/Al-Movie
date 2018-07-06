@@ -12,7 +12,8 @@ export class CardMovieComponent implements OnInit {
   @Input() compactView;
   @Input() styleActor;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router) { }
 
   ngOnInit() {
   }

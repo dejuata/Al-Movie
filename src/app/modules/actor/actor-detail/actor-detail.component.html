@@ -2,7 +2,7 @@
 
 <div fxLayout="row" fxlayoutalign="space-between center" class="container">
   <div class="detail__container--one">
-    <app-detail-info [info]="actor.info"></app-detail-info>
+    <app-detail-info [info]="actor.info" (saveFavorite)="listenFavorite($event)" [favorite]="favorite.favorite"></app-detail-info>
   </div>
   <div class="detail__container--two">
     <mat-tab-group mat-stretch-tabs class="detail__tabs" (selectedTabChange)="tabChange($event)">

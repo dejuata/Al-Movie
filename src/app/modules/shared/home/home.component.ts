@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
       .subscribe(data => {
         // this.movies.push(data.movies);
         this.movies[value] = data.movies;
-        console.log(this.movies);
       }, error => {
         console.error(error);
       });

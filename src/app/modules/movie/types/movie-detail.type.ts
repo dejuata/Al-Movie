@@ -56,7 +56,7 @@ export class MovieDetailHeaderDescriptor {
   public static import(rawData: any) {
     // tslint:disable-next-line:prefer-const
     let movie: MovieDetailHeaderDescriptor = new MovieDetailHeaderDescriptor();
-    const poster_path_url = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/';
+    const poster_path_url = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
     const backdrop_path_url = 'https://image.tmdb.org/t/p/w1400_and_h450_face';
 
     movie.title = rawData.hasOwnProperty('title') ? rawData.title : '';

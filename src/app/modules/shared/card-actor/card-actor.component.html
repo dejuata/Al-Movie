@@ -4,7 +4,7 @@
     'actor__card': !styleMovie
   }">
     <a routerLink="/actors/{{ actor.id }}">
-      <img mat-card-image src="{{ actor.profile_path }}" alt="{{ actor.name }}">
+      <img mat-card-image src="{{ actor.profile_path || actor.poster_path }}" alt="{{ actor.name }}">
     </a>
     <mat-card-footer>
       <mat-card-title [ngClass]="{
@@ -12,7 +12,7 @@
               'actor__card-title': !styleMovie
             }">
         <a routerLink="/actors/{{ actor.id }}" class="a">
-          {{ actor.name }}
+          {{ actor.name || actor.title }}
         </a>
       </mat-card-title>
       <mat-card-subtitle *ngIf="styleMovie" class="actor__card--movie-subtitle">

@@ -1,0 +1,21 @@
+<div class="container">
+  <div fxLayout="row" class="list__menu">
+    <button mat-button color="accent" (click)="showFavoritesMovies()">Movies</button>
+    <button mat-button color="accent" (click)="showFavoritesActors()">Actors</button>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <ng-container *ngIf="showData; else actors_template">
+      <ng-container *ngFor="let movie of movies.favorites">
+        <app-card-movie [movie]="movie.info" [compactView]="true"></app-card-movie>
+      </ng-container>
+    </ng-container>
+    <ng-template #actors_template>
+      <ng-container *ngFor="let actor of actors.favorites">
+        <app-card-actor [actor]="actor.info"></app-card-actor>
+      </ng-container>
+    </ng-template>
+  </div>
+
+
+</div>

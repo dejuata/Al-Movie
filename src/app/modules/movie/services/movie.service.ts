@@ -6,13 +6,17 @@ import { MovieDetailDescriptor } from '../types/movie-detail.type';
 import { MovieCreditsDescriptor } from '../types/movie-credits.type';
 import { MovieVideosDescriptor } from '../types/movie-videos.type';
 import { MovieRecommendationsDescriptor } from '../types/movie-recommendation.type';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FavoriteListDescriptor, FavoriteDescriptor } from '../../shared/types/favorite.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private afDB: AngularFireDatabase) { }
 
   private url(endpoint: string) {
     return `https://api.themoviedb.org/3/movie/${endpoint}`;
@@ -78,6 +82,28 @@ export class MovieService {
       .pipe(
         map(data => {
           return MovieListDescriptor.import(data);
+        })
+      );
+  }
+
+  public saveFavoriteMovie(movie) {
+    this.afDB.database.ref(`movies/${movie.id}`).set(movie);
+  }
+
+  public getFavoriteMovie(id: string) {
+    return this.afDB.object(`movies/${id}`).valueChanges()
+      .pipe(
+        map(data => {
+          return FavoriteDescriptor.import(data);
+        })
+      );
+  }
+
+  public getFavoriteMovies() {
+    return this.afDB.list('movies').valueChanges()
+      .pipe(
+        map(data => {
+          return FavoriteListDescriptor.import(data);
         })
       );
   }

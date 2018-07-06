@@ -5,6 +5,7 @@ import { ActorDetailDescriptor } from '../types/actor-detail.type';
 import { ActorCreditsDescriptor } from '../types/actor-credits.type';
 import { ActorImagesDescriptor } from '../types/actor-images.type';
 import { MovieSummaryDescriptor } from '../../movie/types/movie-list.type';
+import { FavoriteDescriptor } from '../../shared/types/favorite.type';
 
 @Component({
   selector: 'app-actor-detail',
@@ -18,6 +19,7 @@ export class ActorDetailComponent implements OnInit {
   public casting: ActorCreditsDescriptor;
   public cast: MovieSummaryDescriptor[] = [];
   public images: ActorImagesDescriptor = new ActorImagesDescriptor;
+  public favorite: FavoriteDescriptor = new FavoriteDescriptor();
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +28,7 @@ export class ActorDetailComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getDetailActor(this.id);
     this.getCreditsActor(this.id);
+    this.isFavorite(this.id);
   }
 
   ngOnInit() {
@@ -72,5 +75,24 @@ export class ActorDetailComponent implements OnInit {
       this.getImagesActor(this.id);
       console.log(this.images);
     }
+  }
+
+  listenFavorite(event) {
+    const data = {
+      id: this.actor.id,
+      info: this.actor.header,
+      favorite: event
+    };
+    this.actorService.saveFavoriteActor(data);
+  }
+
+  isFavorite(id) {
+    this.actorService.getFavoriteActor(id)
+      .subscribe(res => {
+        console.log(res);
+        if (res != null) {
+          this.favorite = res;
+        }
+      });
   }
 }

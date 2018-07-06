@@ -17,6 +17,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // Pipes
 import { KeysPipe } from '../../pipes/keys.pipe';
@@ -36,7 +38,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CardMovieComponent } from './card-movie/card-movie.component';
 import { CardActorComponent } from './card-actor/card-actor.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
-
+import { FormComponent } from './form/form.component';
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -53,7 +56,9 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     MatCardModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    DragScrollModule
+    DragScrollModule,
+    MatButtonToggleModule,
+    MatCheckboxModule
   ],
   declarations: [
     HomeComponent,
@@ -67,7 +72,9 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     FooterComponent,
     CardMovieComponent,
     ActorHomeTop5Component,
-    CardActorComponent
+    CardActorComponent,
+    FormComponent,
+    FavoriteListComponent
   ],
   exports: [
     NavbarComponent,
@@ -78,7 +85,8 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     DetailInfoComponent,
     DetailHeaderComponent,
     PaginatorComponent,
-    FooterComponent
+    FooterComponent,
+    FormComponent
   ]
 })
 export class SharedModule { }

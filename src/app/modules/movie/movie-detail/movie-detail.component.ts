@@ -6,6 +6,8 @@ import { MovieCreditsDescriptor } from '../types/movie-credits.type';
 import { MovieVideosDescriptor } from '../types/movie-videos.type';
 import { ActorSummaryDescriptor } from '../../actor/types/actor-list.type';
 import { MovieRecommendationDescriptor } from '../types/movie-recommendation.type';
+import { FavoriteDescriptor } from '../../shared/types/favorite.type';
+
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -19,6 +21,7 @@ export class MovieDetailComponent implements OnInit {
   public cast: ActorSummaryDescriptor[] = [];
   public videos: MovieVideosDescriptor = new MovieVideosDescriptor;
   public recommendation: MovieRecommendationDescriptor[] = [];
+  public favorite: FavoriteDescriptor = new FavoriteDescriptor();
 
 
   constructor(
@@ -30,6 +33,7 @@ export class MovieDetailComponent implements OnInit {
       this.getDetailMovie(this.id);
       this.getCreditsMovie(this.id);
       this.getRecommendationsMovie(this.id);
+      this.isFavorite(this.id);
     });
   }
 
@@ -86,6 +90,26 @@ export class MovieDetailComponent implements OnInit {
     } else {
       this.cast = this.casting.cast;
     }
+  }
+
+  listenFavorite(event) {
+    const data = {
+      id: this.movie.id,
+      info: this.movie.header,
+      favorite: event
+    };
+    this.movieService.saveFavoriteMovie(data);
+  }
+
+  isFavorite(id) {
+    this.movieService.getFavoriteMovie(id)
+      .subscribe(res => {
+        if (res != null) {
+          this.favorite = res;
+        }
+      }, error => {
+        console.error(error);
+      });
   }
 
 }
